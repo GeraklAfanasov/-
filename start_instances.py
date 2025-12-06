@@ -2,7 +2,7 @@
 Скрипт для запуска нескольких инстансов Flask приложения на разных портах.
 Это необходимо для настройки балансировки нагрузки с помощью Nginx.
 """
-import subprocess
+import subprocess  # nosec B404
 import sys
 import os
 
@@ -23,7 +23,8 @@ def start_instance(port):
     
     # Запускаем Flask приложение через Python
     # Используем subprocess.Popen для запуска в фоновом режиме
-    process = subprocess.Popen(
+    # Входные данные контролируются (порты из константы, не пользовательский ввод)
+    process = subprocess.Popen(  # nosec B603
         [sys.executable, 'app.py'],
         env=env,
         stdout=subprocess.PIPE,
