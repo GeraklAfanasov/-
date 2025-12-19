@@ -8,7 +8,6 @@ PORTS = [5001, 5002, 5003]
 def start_instance(port):
     env = os.environ.copy()
     env['PORT'] = str(port)
-    # Запуск процесса без перехвата stdout/stderr, чтобы видеть логи в консоли
     process = subprocess.Popen([sys.executable, 'app.py'], env=env)
     print(f"--> Инстанс на порту {port} запущен (PID: {process.pid})")
     return process
